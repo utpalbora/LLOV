@@ -78,7 +78,7 @@ There are three OpenMP benchmarks for experimentation-
 ```
 @article{bora2019llov,
 title={LLOV: A Fast Static Data-Race Checker for OpenMP Programs},
-author={Bora, Utpal and Das, Santanu and Kureja, Pankaj and Joshi, Saurabh and Upadrasta, Ramakrishna and Rajopadhye, Sanjay},
+author={Bora, Utpal and Das, Santanu and Kukreja, Pankaj and Joshi, Saurabh and Upadrasta, Ramakrishna and Rajopadhye, Sanjay},
 journal={arXiv preprint arXiv:1912.12189},
 year={2019}
 }
