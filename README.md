@@ -18,14 +18,14 @@ you can point to the included header & lib with additional compiler flags.
 #### Running LLOV on OpenMP C/C++ code from clang
 ```
 ./bin/clang -Xclang -disable-O0-optnone -Xclang -load -Xclang ./lib/OpenMPVerify.so  \
-  -fopenmp -g tests/1.race1.c
+  -fopenmp -g test/1.race1.c
 ./bin/clang++ -Xclang -disable-O0-optnone -Xclang -load -Xclang ./lib/OpenMPVerify.so  \
   -fopenmp -g test.cpp
 ```
 
 #### Running LLOV on OpenMP C/C++ code from opt
 ```
-./bin/clang -fopenmp -S -emit-llvm -g tests/1.race1.c -o test.ll
+./bin/clang -fopenmp -S -emit-llvm -g test/1.race1.c -o test.ll
 ./bin/opt -mem2reg test.ll -S -o test.ssa.ll
 ./bin/opt -load ./lib/OpenMPVerify.so -openmp-forceinline \
   -inline -openmp-resetbounds test.ssa.ll -S -o test.resetbounds.ll
