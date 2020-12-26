@@ -80,11 +80,24 @@ There are three OpenMP benchmarks for experimentation-
 ## How to cite LLOV in a publication
 
 ```
-@article{bora2019llov,
-title={LLOV: A Fast Static Data-Race Checker for OpenMP Programs},
-author={Bora, Utpal and Das, Santanu and Kukreja, Pankaj and Joshi, Saurabh and Upadrasta, Ramakrishna and Rajopadhye, Sanjay},
-journal={arXiv preprint arXiv:1912.12189},
-year={2019}
+@article{Bora/taco/2020,
+  author = {Bora, Utpal and Das, Santanu and Kukreja, Pankaj and Joshi, Saurabh and Upadrasta, Ramakrishna and Rajopadhye, Sanjay},
+  title = {LLOV: A Fast Static Data-Race Checker for OpenMP Programs},
+  year = {2020},
+  issue_date = {November 2020},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {17},
+  number = {4},
+  issn = {1544-3566},
+  url = {https://doi.org/10.1145/3418597},
+  doi = {10.1145/3418597},
+  abstract = {In the era of Exascale computing, writing efficient parallel programs is indispensable, and, at the same time, writing sound parallel programs is very difficult. Specifying parallelism with frameworks such as OpenMP is relatively easy, but data races in these programs are an important source of bugs. In this article, we propose LLOV, a fast, lightweight, language agnostic, and static data race checker for OpenMP programs based on the LLVM compiler framework. We compare LLOV with other state-of-the-art data race checkers on a variety of well-established benchmarks. We show that the precision, accuracy, and the F1 score of LLOV is comparable to other checkers while being orders of magnitude faster. To the best of our knowledge, LLOV is the only tool among the state-of-the-art data race checkers that can verify a C/C++ or FORTRAN program to be data race free.},
+  journal = {ACM Trans. Archit. Code Optim.},
+  month = dec,
+  articleno = {35},
+  numpages = {26},
+  keywords = {OpenMP, program verification, polyhedral compilation, static analysis, data race detection, shared memory programming}
 }
 ```
 
