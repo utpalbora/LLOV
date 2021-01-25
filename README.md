@@ -82,7 +82,7 @@ There are three OpenMP benchmarks for experimentation-
 ```
 @article{Bora/taco/2020,
   author = {Bora, Utpal and Das, Santanu and Kukreja, Pankaj and Joshi, Saurabh and Upadrasta, Ramakrishna and Rajopadhye, Sanjay},
-  title = {LLOV: A Fast Static Data-Race Checker for OpenMP Programs},
+  title = {{LLOV: A Fast Static Data-Race Checker for OpenMP Programs}},
   year = {2020},
   issue_date = {November 2020},
   publisher = {Association for Computing Machinery},
