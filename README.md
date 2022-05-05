@@ -1,4 +1,10 @@
 # LLOV:  A Fast Static Data-Race Checker for OpenMP Programs.  
+(Make sure to first install `git lfs` before cloning the repo.
+Binaries were compiled on Ubuntu 20.04.)
+```
+sudo apt-get install git-lfs
+git-lfs install
+```
 
 LLOV stands for LLVM OpenMP Verifier.  It is a static data race detection 
 tools in LLVM for OpenMP Programs.
@@ -26,26 +32,35 @@ you can point to the included header & lib with additional compiler flags.
 
 #### Running LLOV on OpenMP C/C++ code from opt
 ```
-./bin/clang -fopenmp -S -emit-llvm -g test/1.race1.c -o test.ll
-./bin/opt -mem2reg test.ll -S -o test.ssa.ll
-./bin/opt -load ./lib/OpenMPVerify.so -openmp-forceinline \
-  -inline -openmp-resetbounds test.ssa.ll -S -o test.resetbounds.ll
+./bin/clang -fopenmp -S -emit-llvm -g -Xclang -disable-O0-optnone \
+  test/1.race1.c -o test.ll
+./bin/opt -mem2reg -loop-simplify -simplifycfg test.ll -S -o test.ssa.ll
+./bin/opt -load ./lib/OpenMPVerify.so -openmp-resetbounds -test.ssa.ll \
+  -S -o test.rb.ll
+./bin/opt -load ./lib/OpenMPVerify.so -openmp-forceinline -inline test.rb.ll \
+  -S -o test.in.ll
+./bin/opt -load ./lib/OpenMPVerify.so -openmp-split-basicblock test.in.ll \
+  -S -o test.sb.ll
 ./bin/opt -load ./lib/OpenMPVerify.so \
   -disable-output \
-  -openmp-verify \
-  test.resetbounds.ll
+  -openmp-verify-mhp \
+  test.sb.ll
 ```
 
 #### Running LLOV on OpenMP FORTRAN code
 ```
 flang -fopenmp -S -emit-llvm -g test.f95 -o test.ll
-./bin/opt -O1 test.ll -S -o test.ssa.ll
-./bin/opt -load ./lib/OpenMPVerify.so -openmp-forceinline \
-  -inline -openmp-resetbounds test.ssa.ll -S -o test.resetbounds.ll
+./bin/opt -mem2reg -loop-simplify -simplifycfg test.ll -S -o test.ssa.ll
+./bin/opt -load ./lib/OpenMPVerify.so -openmp-resetbounds -test.ssa.ll \
+  -S -o test.rb.ll
+./bin/opt -load ./lib/OpenMPVerify.so -openmp-forceinline -inline test.rb.ll \
+  -S -o test.in.ll
+./bin/opt -load ./lib/OpenMPVerify.so -openmp-split-basicblock test.in.ll \
+  -S -o test.sb.ll
 ./bin/opt -load ./lib/OpenMPVerify.so \
   -disable-output \
-  -openmp-verify \
-  test.resetbounds.ll
+  -openmp-verify-mhp \
+  test.sb.ll
 ```
 For more FORTRAN examples with known race conditions, check out our 
 microbenchmark 

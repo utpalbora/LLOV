@@ -1,3 +1,4 @@
 bin/clang-12 filter=lfs diff=lfs merge=lfs -text
 bin/clang-check filter=lfs diff=lfs merge=lfs -text
 lib/libclang.so.12 filter=lfs diff=lfs merge=lfs -text
+bin/opt filter=lfs diff=lfs merge=lfs -text
